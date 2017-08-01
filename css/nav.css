@@ -1,0 +1,68 @@
+.navbar {
+    box-shadow: 2px 2px 5px #bbb;
+    background-color: #fff;
+    color: #222;
+    z-index: 9999;
+    height: 50px;
+}
+
+.app-name{
+    text-decoration: none;
+    color: #4e4e4e;
+    font-weight: 700;
+    /*text-transform: uppercase;*/
+    font-size: 16px;
+}
+
+.navbar-nav > ul > li > a:focus,
+.navbar-nav > ul > li > a:hover {
+    color: #354093;
+    background-color: none;
+}
+.navbar-nav > ul > li > a.active {
+    color: #354093;
+    font-weight: 700;
+}
+.social-id-photo {
+    border-radius: 50%;
+    height: 37px;
+    position: absolute;
+    margin: -6px 0px 0px -45px;
+    box-shadow: 1px 1px 6px #cccccc;
+}
+.sign-out{
+    cursor: pointer;
+}
+
+#collapse-button{
+    margin: 5px;
+    padding: 4px 10px;
+    cursor: pointer;
+}
+
+#collapse-button:hover{
+    background: #eeeeee;
+}
+#collapse-button:active {
+    border: inset 1px #eeeeee;
+    background: #eeeeee;
+}
+
+.navbar{
+    text-align: center;
+}
+
+/* mobile only CSS*/
+@media only screen and (max-width: 977px) {
+    .navbar{
+        padding: 0px;
+    }
+    .navbar-brand{
+        margin-top: 10px;
+    }
+    .navbar-collapse {
+        background-color: #ffffff;
+        text-align: center;
+        border-bottom: 3px solid #cccccc;
+    }
+}
