@@ -3,6 +3,7 @@ html, body {
     height: 100%;
     padding: 0;
     margin: 0;
+    font: Helvetica,Arial;
 }
 #map {
     background-color: #ffffff;
@@ -35,7 +36,7 @@ html, body {
   font-size: 17px;
   padding-top: 13px;
 }
-.swipe-left-arrow{
+/*.swipe-left-arrow{
   text-align:left;
   margin-left:10px;
   font-size: 20px;
@@ -48,7 +49,9 @@ html, body {
   font-size: 20px;
   padding-top: 10px;
   cursor: pointer;
-}
+}*/
+
+/*** leaflet styles ***/
 .leaflet-left{
   margin-top: 50px;
 }
@@ -71,6 +74,10 @@ html, body {
     background: #fff;
     z-index: 105;
 }
+.leaflet-control-locate{
+    display: none;
+}
+/*** select2 styles ***/
 .select2-container--default .select2-selection--single .select2-selection__rendered {
     font-size: 13px;
 }
@@ -78,7 +85,31 @@ html, body {
     padding: 2px 6px;
     font-size: 13px;
 }
-
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #999;
+    color: #858585;
+    webkit-box-shadow: rgba(0,0,0,.2) 0 0 4px 2px;
+    -moz-box-shadow: rgba(0,0,0,.2) 0 0 4px 2px;
+    box-shadow: rgba(0,0,0,.2) 0 0 4px 2px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    z-index: 105;
+}
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: black;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: black;
+    line-height: 28px;
+}
+.select2-container .select2-selection--single {
+    height: 30px;
+}
+/** **/
 #attribute-legend-area {
     left: 10px;
     bottom: 26px;
@@ -105,6 +136,7 @@ html, body {
 
 #selected_column_title {
     font-size: 13px !important;
+    color: #444;
     text-align: center;
     margin: -5px 0px 5px 0px;
 }
@@ -209,4 +241,36 @@ div.cartodb-legend.choropleth li.graph {
     -o-border-radius: 3px;
     border-radius: 3px;
     border: 1px solid #b3b3b3;
+}
+
+/*** tablet look ***/
+@media screen and (max-width: 900px) {
+    /*#legendWrapper,
+    #legendWrapper *,
+    .select2-results__option,
+    .tableTitles,
+    div.info.visible-layers * {
+        font-size: 10px;
+    }
+    div#legendWrapper {
+        padding: 10px;
+    }
+    .visible-layers {
+        padding: 0px 10px 10px 0px;
+        width: auto;
+    }*/
+
+}
+
+/*** mobile look ***/
+@media screen and (max-width: 600px) {
+    #navbar-title{
+        display: none;
+    }
+    .leaflet-control-measure.leaflet-control{
+        display: none;
+    }
+    .leaflet-control-layers{
+        display:none;
+    }
 }
