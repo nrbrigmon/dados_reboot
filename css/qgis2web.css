@@ -55,3 +55,48 @@ html, body {
 .leaflet-control-measure.leaflet-control{
   margin-top: 60px;
 }
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    font-size: 13px;
+}
+.select2-results__option {
+    padding: 2px 6px;
+    font-size: 13px;
+}
+
+#attribute-legend-area {
+    left: 10px;
+    bottom: 36px;
+    width: 300px;
+    z-index: 8999;
+    position: absolute;
+    background-color: white;
+    display: none;
+    transition: display .25s ease-in-out;
+    -moz-transition: display .25s ease-in-out;
+    -webkit-transition: display .25s ease-in-out;
+}
+
+#feature-info {
+    display: none;
+    transition: display .25s ease-in-out;
+    -moz-transition: display .25s ease-in-out;
+    -webkit-transition: display .25s ease-in-out;
+}
+
+#color-range {
+    display: none;
+}
+
+#selected_column_title {
+    font-size: 13px !important;
+    text-align: center;
+    margin: -5px 0px 5px 0px;
+}
+
+
+.column-source-row {
+    text-align: center;
+    margin: 6px 0px -9px 0px;
+    text-transform: uppercase;
+    font-size: 9px;
+}

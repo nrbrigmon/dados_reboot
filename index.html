@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="css/nav.css" />
   <title>dados-comunidados</title>
 </head>
+
 <body>
   <nav class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded">
     <!-- <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" id="collapse-button" (click)="isCollapsed = !isCollapsed" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,12 +57,12 @@
       <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
     </div> -->
     <div class='site-selection-container'>
-      <select class="site-selection">
+      <select class="site-selection" style="width: 150px">
         <option value=""></option>
         <option value="Helio">Heliopolis     </option>
         <option value="Sao">Sao Francisco      </option>
       </select>
-      <select class="metric-selection">
+      <select class="metric-selection" style="width: 250px">
         <option value=""></option>
         <option value='qual' count='random' label='Q1_3'>District / Núcleo</option>
         <option value='qual' count='4' label='Q3'>Development Type / Tipo De Habitação</option>
@@ -118,12 +119,31 @@
 
   </div>
 
-  <div id="map">
+  <div id="map"></div>
+  <div id="attribute-legend-area" class="cartodb-legend-stack">
+      <div id="feature-info"></div>
+      <div id="color-range" class="cartodb-legend choropleth" style="display: block;">
+          <h4 id="selected_column_title"></h4>
+          <ul>
+              <li class="min">0</li>
+              <li class="max">13295</li>
+              <li class="graph count_441">
+                  <div class="colors">
+                      <div class="quartile"></div>
+                      <div class="quartile"></div>
+                      <div class="quartile"></div>
+                      <div class="quartile"></div>
+                      <div class="quartile"></div>
+                  </div>
+              </li>
+          </ul>
+          <p class="column-source-row">Source: <span id="selected_column_source">acs 2014 us census</span></p>
+      </div>
   </div>
-
   <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script><script src="http://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+  <script src="http://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
   <script src="js/qgis2web_expressions.js"></script>
   <script src="js/L.Control.Locate.min.js"></script>
   <script src="js/multi-style-layer.js"></script>
