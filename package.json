@@ -1,0 +1,11 @@
+{
+  "name": "dadosJQUERY",
+  "version": "1.0.0",
+  "description": "app for visualizing it + healthcare providers with demographic info",
+  "main": "index.js",
+  "scripts": {
+    "test": "go"
+  },
+  "author": "nate b",
+  "license": "ISC"
+}

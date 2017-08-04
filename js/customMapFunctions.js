@@ -18,6 +18,7 @@ jQuery(document).ready(function($) {
     inertiaDeceleration: 6000
   });
 
+  var _key = 'helio_di'; //starting layer
   var hash = new L.Hash(map); //add hashes to html address to easy share locations
   var basemap0 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
@@ -163,9 +164,29 @@ jQuery(document).ready(function($) {
   map.getPane('pane_saofrancisco0729').style.zIndex = 400;
   map.getPane('pane_saofrancisco0729').style['mix-blend-mode'] = 'normal';
   // var layer_saofrancisco0729 = new L.geoJson(json_saofrancisco0729, {
-  layerGroup.sao = new L.geoJson(json_saofrancisco0729, {
+  layerGroup.sao_bl = new L.geoJson(json_saofrancisco0729, {
     attribution: '<a href=""></a>',
     pane: 'pane_saofrancisco0729',
+    onEachFeature: basic_popup,
+    style: initial_style,
+  });
+
+  map.createPane('pane_saofrancisco_di');
+  map.getPane('pane_saofrancisco_di').style.zIndex = 400;
+  map.getPane('pane_saofrancisco_di').style['mix-blend-mode'] = 'normal';
+  layerGroup.sao_di = new L.geoJson(json_saofranciscodistrict, {
+    attribution: '<a href=""></a>',
+    pane: 'pane_saofrancisco_di',
+    onEachFeature: basic_popup,
+    style: initial_style,
+  });
+
+  map.createPane('pane_heliopolis_di');
+  map.getPane('pane_heliopolis_di').style.zIndex = 400;
+  map.getPane('pane_heliopolis_di').style['mix-blend-mode'] = 'normal';
+  layerGroup.helio_di = new L.geoJson(json_heliopolisdistrict, {
+    attribution: '<a href=""></a>',
+    pane: 'pane_heliopolis_di',
     onEachFeature: basic_popup,
     style: initial_style,
   });
@@ -186,7 +207,8 @@ jQuery(document).ready(function($) {
       },
       mouseover: highlightFeature,
     });
-    var popupContent = '<p><b>Block: </b>' + feature.properties['LABEL'] + '</p>';
+    
+    var popupContent = '<p><b>Shape ID</b>' + feature.properties['LABEL'] + '</p>';
     layer.bindPopup(popupContent);
   }
 
@@ -194,14 +216,13 @@ jQuery(document).ready(function($) {
   map.getPane('pane_heliopolis0729').style.zIndex = 401;
   map.getPane('pane_heliopolis0729').style['mix-blend-mode'] = 'normal';
   // var layer_heliopolis0729 = new L.geoJson(json_heliopolis0729, {
-  layerGroup.helio = new L.geoJson(json_heliopolis0729, {
+  layerGroup.helio_bl = new L.geoJson(json_heliopolis0729, {
     attribution: '<a href=""></a>',
     pane: 'pane_heliopolis0729',
     onEachFeature: basic_popup,
     style: initial_style,
   });
-  var key = 'helio'
-  map.addLayer(layerGroup[key]);
+  map.addLayer(layerGroup[_key]);
   map.attributionControl.addAttribution('<a target="_blank">N. Brigmon</a>');
   L.control.locate().addTo(map);
   var baseMaps = {
@@ -232,18 +253,11 @@ jQuery(document).ready(function($) {
   var $siteSelect2 = $(".site-selection");
   // $('.site-selection').val('Heliopolis').trigger("change");
   $siteSelect2.on("select2:select", function(e) {
-    var siteSelect = e.params.data.element.attributes.value.value;
-    if (siteSelect == 'Helio') {
-      map.fitBounds(layerGroup['helio'].getBounds());
-      map.addLayer(layerGroup['helio']);
-      key = 'helio';
-      map.removeLayer(layerGroup['sao']);
-    } else if (siteSelect == 'Sao') {
-      map.fitBounds(layerGroup['sao'].getBounds());
-      map.addLayer(layerGroup['sao']);
-      key = 'sao';
-      map.removeLayer(layerGroup['helio']);
-    } else {}
+    map.removeLayer(layerGroup[_key]);
+    _key = e.params.data.element.attributes.value.value;
+    map.fitBounds(layerGroup[_key].getBounds());
+    map.addLayer(layerGroup[_key]);
+
     //reset the metric selection
     $('.metric-selection').val(null).trigger("change");
   });
@@ -266,7 +280,7 @@ jQuery(document).ready(function($) {
       //qualititative style
         chosenPallete = qualitativeSchemes[Math.floor(Math.random() * 2) + 1];
 
-        layerGroup[key].eachLayer(function(layer) {
+        layerGroup[_key].eachLayer(function(layer) {
           layer.setStyle({
             fillColor: myQualColor(layer.feature.properties[columnLookup]),
             fillOpacity: myFillOpacity(layer.feature.properties[columnLookup])
@@ -315,7 +329,7 @@ jQuery(document).ready(function($) {
       } else {
         chosenPallete = sequentialSchemes[Math.floor(Math.random() * 7) + 1];
       }
-      layerGroup[key].eachLayer(function(layer) {
+      layerGroup[_key].eachLayer(function(layer) {
         layer.setStyle({
           fillColor: myFillColor(layer.feature.properties[columnLookup]),
           fillOpacity: myFillOpacity(layer.feature.properties[columnLookup])

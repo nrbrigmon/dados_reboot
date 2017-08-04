@@ -56,13 +56,17 @@
     <div class="swipe-right-arrow col">
       <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
     </div> -->
-    <div class='site-selection-container'>
-      <select class="site-selection" style="width: 150px">
+    <div class="site-selection-container col-4">
+      <select class="site-selection" style="max-width: 150px">
         <option value=""></option>
-        <option value="Helio">Heliopolis     </option>
-        <option value="Sao">Sao Francisco      </option>
+        <option value="helio_bl">Heliopolis - Block</option>
+        <option value="helio_di">Heliopolis - District</option>
+        <option value="sao_bl">Sao Francisco - Block</option>
+        <option value="sao_di">Sao Francisco - District</option>
       </select>
-      <select class="metric-selection" style="width: 250px">
+  </div>
+  <div class="site-selection-container col-8">
+      <select class="metric-selection" style="max-width: 250px">
         <option value=""></option>
         <option value='qual' count='random' label='Q1_3'>District / Núcleo</option>
         <option value='qual' count='4' label='Q3'>Development Type / Tipo De Habitação</option>
@@ -158,6 +162,8 @@
   <script src="js/leaflet.markercluster.js"></script>
   <script src="data/saofrancisco0729.js"></script>
   <script src="data/heliopolis0729.js"></script>
+  <script src="data/heliopolisdistrict.js"></script>
+  <script src="data/saofranciscodistrict.js"></script>
   <script src="js/customMapFunctions.js"></script>
 </body>
 

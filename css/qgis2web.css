@@ -109,6 +109,9 @@ html, body {
 .select2-container .select2-selection--single {
     height: 30px;
 }
+.select2-container{
+    width: 100%;
+}
 /** **/
 #attribute-legend-area {
     left: 10px;
