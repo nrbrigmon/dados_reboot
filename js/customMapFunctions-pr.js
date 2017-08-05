@@ -30,17 +30,17 @@ jQuery(document).ready(function($) {
     });
     var aerialHybrid = L.layerGroup([
         L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+            attribution: 'Telhas &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
         }),
         L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lines/{z}/{x}/{y}.{ext}', {
-            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            attribution: 'Mapa de telhas por<a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
             subdomains: 'abcd',
             minZoom: 0,
             maxZoom: 20,
             ext: 'png'
         }),
         L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.{ext}', {
-            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            attribution: 'Mapa de telhas por <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
             subdomains: 'abcd',
             minZoom: 0,
             maxZoom: 20,
@@ -209,7 +209,7 @@ jQuery(document).ready(function($) {
             mouseover: highlightFeature,
         });
 
-        var popupContent = '<p><b>LOCATION: </b>' + feature.properties['LABEL'] + '</p>';
+        var popupContent = '<p><b>LOCALIZAÇÃO: </b>' + feature.properties['LABEL'] + '</p>';
         layer.bindPopup(popupContent);
     }
 
@@ -265,7 +265,7 @@ jQuery(document).ready(function($) {
 
 
     $(".metric-selection").select2({
-        placeholder: "Select a metric"
+        placeholder: "Selecione uma métrica"
     });
     var $metricSelect2 = $(".metric-selection");
     $metricSelect2.on("select2:select", function(e) {
@@ -297,7 +297,7 @@ jQuery(document).ready(function($) {
                 }
                 var qualFeature = parseInt(layer.feature.properties[columnLookup]);
                 // console.log(qualFeature);
-                var customPopUp = "<p><b>LOCATION: </b>" + (layer.feature.properties['LABEL']).toUpperCase() + "</p>" +
+                var customPopUp = "<p><b>LOCALIZAÇÃO: </b>" + (layer.feature.properties['LABEL']).toUpperCase() + "</p>" +
                     "<p><b>" + selection + ": </b>" + fullColorLookup[columnLookup][qualFeature] + "</p>";
                 layer.bindPopup(customPopUp);
                 // console.log(layer.feature.properties['LABEL']);
@@ -320,7 +320,7 @@ jQuery(document).ready(function($) {
             $("#attribute-legend-area").show();
             $("#color-range").show();
             $("#color-range li.max").html("");
-            $("#color-range li.min").html("Qualitative scheme: examine feature to view data");
+            $("#color-range li.min").html("Esquema qualitativo: examinar recurso para visualizar dados");
             $("#selected_column_title").html(selection);
             $("div.colors div").each(function(index, elem) {
                 // console.log(index);
@@ -380,7 +380,7 @@ jQuery(document).ready(function($) {
                 } else {
                     textDisplay = layer.feature.properties[columnLookup];
                 }
-                var customPopUp = "<p><b>LOCATION: </b>" + (layer.feature.properties['LABEL']).toUpperCase() + "</p>" +
+                var customPopUp = "<p><b>LOCALIZAÇÃO: </b>" + (layer.feature.properties['LABEL']).toUpperCase() + "</p>" +
                     "<p><b>" + selection + ": </b>" + textDisplay + "</p>";
                 layer.bindPopup(customPopUp);
                 // console.log(layer.feature.properties['LABEL']);
@@ -401,8 +401,8 @@ jQuery(document).ready(function($) {
             $("#feature-info").show()
             $("#attribute-legend-area").show();
             $("#color-range").show();
-            $("#color-range li.max").html("Max: " + columnMax);
-            $("#color-range li.min").html("Min: " + columnMin);
+            $("#color-range li.max").html("Máximo: " + columnMax);
+            $("#color-range li.min").html("Mínimo: " + columnMin);
             $("#selected_column_title").html(selection);
             $("div.colors div").each(function(index, elem) {
                 // console.log(index);
@@ -412,7 +412,7 @@ jQuery(document).ready(function($) {
 
     });
 
-    $(".leaflet-control-layers").prepend("<h6>Base Maps</h6>")
+    $(".leaflet-control-layers").prepend("<h6>Mapas Base</h6>")
 
     function moveBaseLayers() {
         if ($(window).width() < '600') {
@@ -439,40 +439,40 @@ var fullColorLookup = {
         4: 'Urbanization of Favelas'
     },
     "Q10": {
-        1: 'Original owner',
-        2: 'Son, daughter, wife of original owner',
-        3: 'Extended family of original owner',
-        4: 'Purchased from original owner',
-        5: 'Rent from the original owner',
-        6: 'Rent from a secondary owner',
-        7: 'Exchanged houses',
-        8: 'Son, daughter, wife of secondary owner',
-        9: 'Purchased from secondary owner',
-        10: 'Relative of secondary owner',
-        11: 'Purchased the land and constructed home',
-        12: 'Purchased from family member',
-        13: 'Live for free - secondary owner',
-        14: 'Resettlement via local government',
-        15: 'Rental assistance via local government'
+         1: 'Proprietário original',
+         2: 'Filho, filha, esposa do dono original',
+         3: "Família alargada do proprietário original",
+         4: 'Comprado do proprietário original',
+         5: 'Aluguel do proprietário original',
+         6: 'Aluguel de um dono secundário',
+         7: 'Casas trocadas',
+         8: 'Filho, filha, esposa do dono secundário',
+         9: 'Comprado do proprietário secundário',
+         10: 'Relativo ao proprietário secundário',
+         11: "Comprou a terra e construiu a casa"
+         12: "Comprado do membro da família",
+         13: "Viver gratuitamente - proprietário secundário",
+         14: 'Reassentamento através do governo local',
+         15: 'Aluguel de assistência através do governo local'
     },
     "Q33": {
-        0: 'Unemployed',
-        1: 'Employed',
-        2: 'Retired',
-        3: 'Student',
+        0: 'Desempregado',
+        1: 'Empregado',
+        2: 'Aposentado',
+        3: 'Estudante',
         4: 'Housewife',
-        5: 'Works out of the home',
-        6: 'Does not work / never worked',
-        7: 'Other',
-        8: 'Bico / Informal Economy',
-        9: 'Lives on a pension',
+        5: 'Funciona fora da casa',
+        6: 'Não funciona / nunca trabalhou',
+        7: 'Outro',
+        8: 'Bico / Economia Informal',
+        9: 'Vive em uma pensão',
     },
     "Q179_1": {
-        0: 'No participation',
-        1: 'Self-builder',
-        2: 'Family member constructed home',
-        3: 'Contracted a builder',
-        4: 'Worked with a builder',
+        0: 'Nenhuma participação',
+        1: 'Auto-construtor',
+        2: "Membro da família construído em casa",
+        3: 'Contratou um construtor',
+        4: 'Trabalhou com um construtor',
     },
     "Q1_3": {
         1: 'H - Gleba K',
