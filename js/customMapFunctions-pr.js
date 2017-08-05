@@ -333,6 +333,8 @@ jQuery(document).ready(function($) {
             var columnMin = parseFloat(e.params.data.element.attributes.min.value).toFixed(2);
             //breaks='4,8,27,65'
             var columnBreaks = e.params.data.element.attributes.breaks.value;
+            //legend support
+            var legendCue = e.params.data.element.attributes.legend.value;
 
             if (columnLookup == 'Q40' || columnLookup == 'Q205_1') {
                 columnMax = toCurrency(columnMax);
@@ -378,7 +380,12 @@ jQuery(document).ready(function($) {
                 if (columnLookup == 'Q40' || columnLookup == 'Q205_1') {
                     textDisplay = toCurrency(layer.feature.properties[columnLookup]);
                 } else {
-                    textDisplay = layer.feature.properties[columnLookup];
+                    if (layer.feature.properties[columnLookup]){
+                        textDisplay = parseFloat(layer.feature.properties[columnLookup]).toFixed(2);
+                    } else {
+                        textDisplay = layer.feature.properties[columnLookup];
+                    }
+
                 }
                 var customPopUp = "<p><b>LOCALIZAÇÃO: </b>" + (layer.feature.properties['LABEL']).toUpperCase() + "</p>" +
                     "<p><b>" + selection + ": </b>" + textDisplay + "</p>";
@@ -397,12 +404,20 @@ jQuery(document).ready(function($) {
                 });
             });
 
+            function legendHelper(cue){
+                return legendLookup[cue];
+            }
             //updateLegend
             $("#feature-info").show()
             $("#attribute-legend-area").show();
             $("#color-range").show();
-            $("#color-range li.max").html("Máximo: " + columnMax);
-            $("#color-range li.min").html("Mínimo: " + columnMin);
+            if (legendCue == 'none'){
+                $("#color-range li.max").html(legendHelper(legendCue)[1] + " " + columnMax);
+                $("#color-range li.min").html(legendHelper(legendCue)[0] + " " + columnMin);
+            } else {
+                $("#color-range li.max").html(legendHelper(legendCue)[1]);
+                $("#color-range li.min").html(legendHelper(legendCue)[0]);
+            }
             $("#selected_column_title").html(selection);
             $("div.colors div").each(function(index, elem) {
                 // console.log(index);
@@ -449,7 +464,7 @@ var fullColorLookup = {
          8: 'Filho, filha, esposa do dono secundário',
          9: 'Comprado do proprietário secundário',
          10: 'Relativo ao proprietário secundário',
-         11: "Comprou a terra e construiu a casa"
+         11: "Comprou a terra e construiu a casa",
          12: "Comprado do membro da família",
          13: "Viver gratuitamente - proprietário secundário",
          14: 'Reassentamento através do governo local',
@@ -514,4 +529,15 @@ var fullColorLookup = {
         37: 'SF - Provisao 6',
         38: 'SF - Prover 7'
     }
+}
+var legendLookup = {
+     'none': ['Min:', 'Max:'],
+     'gender': ['Feminino (1)', 'Masculino (2)'],
+     'affirm': ['Não (0)', 'Sim (1)'],
+     'edu': ['Baixo (0)', 'Alto (4)'],
+     'commute': ['Menos de 15 min. (1)', 'Mais de 60 min. (4)'],
+     'duration': ['0 Meses (1)', '12+ Meses (3)'],
+     'secureA': ['Baixo (0)', 'Alto (1)'],
+     'secureB': ['Baixo (0)', 'Alto (2)'],
+     'superf': ['Superficial (1)', 'Expansivo (2)']
 }

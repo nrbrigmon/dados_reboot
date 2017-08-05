@@ -333,6 +333,8 @@ jQuery(document).ready(function($) {
             var columnMin = parseFloat(e.params.data.element.attributes.min.value).toFixed(2);
             //breaks='4,8,27,65'
             var columnBreaks = e.params.data.element.attributes.breaks.value;
+            //legend support
+            var legendCue = e.params.data.element.attributes.legend.value;
 
             if (columnLookup == 'Q40' || columnLookup == 'Q205_1') {
                 columnMax = toCurrency(columnMax);
@@ -378,7 +380,12 @@ jQuery(document).ready(function($) {
                 if (columnLookup == 'Q40' || columnLookup == 'Q205_1') {
                     textDisplay = toCurrency(layer.feature.properties[columnLookup]);
                 } else {
-                    textDisplay = layer.feature.properties[columnLookup];
+                    if (layer.feature.properties[columnLookup]){
+                        textDisplay = parseFloat(layer.feature.properties[columnLookup]).toFixed(2);
+                    } else {
+                        textDisplay = layer.feature.properties[columnLookup];
+                    }
+
                 }
                 var customPopUp = "<p><b>LOCATION: </b>" + (layer.feature.properties['LABEL']).toUpperCase() + "</p>" +
                     "<p><b>" + selection + ": </b>" + textDisplay + "</p>";
@@ -397,12 +404,20 @@ jQuery(document).ready(function($) {
                 });
             });
 
+            function legendHelper(cue){
+                return legendLookup[cue];
+            }
             //updateLegend
             $("#feature-info").show()
             $("#attribute-legend-area").show();
             $("#color-range").show();
-            $("#color-range li.max").html("Max: " + columnMax);
-            $("#color-range li.min").html("Min: " + columnMin);
+            if (legendCue == 'none'){
+                $("#color-range li.max").html(legendHelper(legendCue)[1] + " " + columnMax);
+                $("#color-range li.min").html(legendHelper(legendCue)[0] + " " + columnMin);
+            } else {
+                $("#color-range li.max").html(legendHelper(legendCue)[1]);
+                $("#color-range li.min").html(legendHelper(legendCue)[0]);
+            }
             $("#selected_column_title").html(selection);
             $("div.colors div").each(function(index, elem) {
                 // console.log(index);
@@ -514,4 +529,15 @@ var fullColorLookup = {
         37: 'SF - Provisao 6',
         38: 'SF - Prover 7'
     }
+}
+var legendLookup = {
+    'none':['Min:','Max:'],
+    'gender':['Female (1)','Male (2)'],
+    'affirm':['No (0)','Yes (1)'],
+    'edu':['Low (0)','High (4)'],
+    'commute':['Less than 15 min.(1)','More than 60 min.(4)'],
+    'duration':['0 Months (1)','12+ Months (3)'],
+    'secureA':['Low (0)','High (1)'],
+    'secureB':['Low (0)','High (2)'],
+    'superf':['Superficial (1)','Expansive (2)']
 }
