@@ -245,7 +245,22 @@ div.cartodb-legend.choropleth li.graph {
     border-radius: 3px;
     border: 1px solid #b3b3b3;
 }
+/** MODAL SECTION*/
+#info-btn {
+    position: absolute;
+    cursor: pointer;
+    right: 10px;
+    top: 6px;
+    font-size: 17px;
+}
+#info-btn{
+    float:right;
+}
 
+.modal-dialog{
+    margin-top: 80px;
+    font-size: 14px;
+}
 /*** tablet look ***/
 @media screen and (max-width: 900px) {
     /*#legendWrapper,
@@ -273,7 +288,12 @@ div.cartodb-legend.choropleth li.graph {
     .leaflet-control-measure.leaflet-control{
         display: none;
     }
-    .leaflet-control-layers{
-        display:none;
+    div.leaflet-control-layers.leaflet-control-layers-expanded.leaflet-control{
+        margin-top: 60px;
+    }
+    #attribute-legend-area{
+        left: 0px;
+        width: 80%;
+        margin: 0 auto;
     }
 }

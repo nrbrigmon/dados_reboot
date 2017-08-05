@@ -165,7 +165,7 @@ jQuery(document).ready(function($) {
   map.getPane('pane_saofrancisco0729').style['mix-blend-mode'] = 'normal';
   // var layer_saofrancisco0729 = new L.geoJson(json_saofrancisco0729, {
   layerGroup.sao_bl = new L.geoJson(json_saofrancisco0729, {
-    attribution: '<a href=""></a>',
+    // attribution: '<a href=""></a>',
     pane: 'pane_saofrancisco0729',
     onEachFeature: basic_popup,
     style: initial_style,
@@ -175,7 +175,7 @@ jQuery(document).ready(function($) {
   map.getPane('pane_saofrancisco_di').style.zIndex = 400;
   map.getPane('pane_saofrancisco_di').style['mix-blend-mode'] = 'normal';
   layerGroup.sao_di = new L.geoJson(json_saofranciscodistrict, {
-    attribution: '<a href=""></a>',
+    // attribution: '<a href=""></a>',
     pane: 'pane_saofrancisco_di',
     onEachFeature: basic_popup,
     style: initial_style,
@@ -185,7 +185,7 @@ jQuery(document).ready(function($) {
   map.getPane('pane_heliopolis_di').style.zIndex = 400;
   map.getPane('pane_heliopolis_di').style['mix-blend-mode'] = 'normal';
   layerGroup.helio_di = new L.geoJson(json_heliopolisdistrict, {
-    attribution: '<a href=""></a>',
+    // attribution: '<a href=""></a>',
     pane: 'pane_heliopolis_di',
     onEachFeature: basic_popup,
     style: initial_style,
@@ -207,8 +207,8 @@ jQuery(document).ready(function($) {
       },
       mouseover: highlightFeature,
     });
-    
-    var popupContent = '<p><b>Shape ID</b>' + feature.properties['LABEL'] + '</p>';
+
+    var popupContent = '<p><b>Shape ID: </b>' + feature.properties['LABEL'] + '</p>';
     layer.bindPopup(popupContent);
   }
 
@@ -217,7 +217,7 @@ jQuery(document).ready(function($) {
   map.getPane('pane_heliopolis0729').style['mix-blend-mode'] = 'normal';
   // var layer_heliopolis0729 = new L.geoJson(json_heliopolis0729, {
   layerGroup.helio_bl = new L.geoJson(json_heliopolis0729, {
-    attribution: '<a href=""></a>',
+    // attribution: '<a href=""></a>',
     pane: 'pane_heliopolis0729',
     onEachFeature: basic_popup,
     style: initial_style,
@@ -389,6 +389,20 @@ jQuery(document).ready(function($) {
   });
 
   $(".leaflet-control-layers").prepend("<h6>Base Maps</h6>")
+
+  function moveBaseLayers(){
+    if ($(window).width() < '600'){
+        $("div.leaflet-top.leaflet-right").prepend($('.leaflet-control-layers'));
+    } else {
+        $("div.leaflet-bottom.leaflet-right").prepend($('.leaflet-control-layers'));
+    }
+  }
+  moveBaseLayers();
+  //jquery media query
+  $(window).resize(function() {
+      moveBaseLayers();
+  });
+
 }); //end of jQuery closure
 
 var fullColorLookup = {
