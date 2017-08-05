@@ -31,16 +31,27 @@
           <img src="" />
           COMUNIDADOS
       </div>
-      <span id="info-btn">
-          <button type="button" id="#help-modal" class="btn btn-primary" data-toggle="modal" data-target="#help-popup">
-            <i class="fa fa-info" aria-hidden="true"></i>
-          </button>
-      </span>
+    </a>
+    <span id="switchlangbtn">
+      <a href="./pr.html">
+        <span>Versão em Português</span>
+        <img id="langflag" alt="Versão em português" src="./images/brazil_flag.png" aria-hidden="true" />
+      </a>
+      <a href="./index.html">
+        <span>English Version</span>
+        <img id="langflag" alt="English Version" src="./images/us_flag.png" aria-hidden="true" />
+      </a>
+    </span>
+    <a id="info-btn">
+      <span>About this Application</span>
+      <button type="button" id="#help-modal" class="btn btn-primary" data-toggle="modal" data-target="#help-popup">
+        <i class="fa fa-info" aria-hidden="true"></i>
+      </button>
     </a>
   </nav>
 
 
-  <!-- Modal -->
+  <!-- Modal popup to describe the application-->
   <div class="modal fade" id="help-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -51,7 +62,7 @@
           </button>
         </div>
         <div class="modal-body">
-          This application was built with the help of ...
+          This application was built with the help of Kristine Stiphany, Kirsten Larson, and Nathan Brigmon during the Chapa Project which was funded by the National Science Foundation and the University of Texas at Austin.
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -61,17 +72,17 @@
   </div>
 
   <div id="swipe-wrapper" class="row">
-    <div class="site-selection-container col-4">
-      <select class="site-selection" style="max-width: 150px">
+    <div class="site-selection-container col-12">
+      <select class="site-selection" style="min-width: 120px; max-width: 150px">
         <option value=""></option>
         <option value="helio_bl">Heliopolis - Block</option>
         <option value="helio_di">Heliopolis - District</option>
         <option value="sao_bl">Sao Francisco - Block</option>
         <option value="sao_di">Sao Francisco - District</option>
       </select>
-  </div>
-  <div class="site-selection-container col-8">
-      <select class="metric-selection" style="max-width: 250px">
+  <!-- </div>
+  <div class="site-selection-container col-8"> -->
+      <select class="metric-selection" style="min-width: 180px; max-width: 250px">
         <option value=""></option>
         <option value='qual' count='random' label='Q1_3'>District / Núcleo</option>
         <option value='qual' count='4' label='Q3'>Development Type / Tipo De Habitação</option>

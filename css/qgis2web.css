@@ -245,6 +245,7 @@ div.cartodb-legend.choropleth li.graph {
     border-radius: 3px;
     border: 1px solid #b3b3b3;
 }
+
 /** MODAL SECTION*/
 #info-btn {
     position: absolute;
@@ -252,15 +253,62 @@ div.cartodb-legend.choropleth li.graph {
     right: 10px;
     top: 6px;
     font-size: 17px;
-}
-#info-btn{
-    float:right;
+        float:right;
 }
 
+a#info-btn span,
+span#switchlangbtn span {
+    display: none;
+    transition: display .5s ease-in-out;
+    -moz-transition: display .5s ease-in-out;
+    -webkit-transition: display .5s ease-in-out;
+}
+a#info-btn:hover,
+span#switchlangbtn a:hover,
+a#info-btn:focus,
+span#switchlangbtn a:focus {
+    text-decoration: none;
+}
+a#info-btn:hover span,
+span#switchlangbtn a:hover span {
+    display: block;
+    position: absolute;
+    width: 125px;
+    padding: 5px;
+    z-index: 100;
+    color: #AAA;
+    background: black;
+    font-size: 10px;
+    text-align: center;
+    border-radius: 4px;
+    transition: display .5s ease-in-out;
+    -moz-transition: display .5s ease-in-out;
+    -webkit-transition: display .5s ease-in-out;
+}
+
+a#info-btn:hover span {
+    right: 55px;
+    top: 7px;
+}
+span#switchlangbtn a:hover span{
+    left: 65px;
+    top: 10px;
+}
 .modal-dialog{
     margin-top: 80px;
     font-size: 14px;
 }
+/* flags for switching languages*/
+#switchlangbtn{
+    position: absolute;
+    margin: 5px;
+    padding: 7px;
+}
+#langflag{
+    width: 22px;
+    height: 14px;
+}
+
 /*** tablet look ***/
 @media screen and (max-width: 900px) {
     /*#legendWrapper,
