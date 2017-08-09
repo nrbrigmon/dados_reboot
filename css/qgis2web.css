@@ -304,6 +304,7 @@ span#switchlangbtn a:hover span{
     position: absolute;
     margin: 5px;
     padding: 7px;
+    display: inline;
 }
 #langflag{
     width: 22px;
