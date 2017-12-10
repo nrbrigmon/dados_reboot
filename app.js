@@ -1,20 +1,19 @@
 (function() {
-    "use strict";
+	'use strict';
 
-    var express = require('express');
+	var express = require('express');
 
-    var app = express();
-    var port = process.env.PORT || 8080; // set our port
+	var app = express();
 
-    app.use(express.static(__dirname + '/'));
+	app.use(express.static(__dirname + '/'));
 
-    app.get('/', function(req, res){
-        res.sendfile(__dirname + '/index.html');
-    });
+	app.get('*', function(req, res) {
+		res.sendFile(__dirname + '/index.html');
+	});
 
-
-    // start app ===============================================
-    app.listen(port);   
-    console.log('Connecting to server at port: ' + port);  
-
+	// start app ===============================================
+	const PORT = process.env.PORT || 8080;
+	app.listen(PORT, function() {
+		console.log(`'... app listening on port ${PORT}'`);
+	});
 })();

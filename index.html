@@ -2,85 +2,85 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="http://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
-    <link rel="stylesheet" href="css/L.Control.Locate.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/qgis2web.css">
-    <link rel="stylesheet" href="css/MarkerCluster.css" />
-    <link rel="stylesheet" href="css/MarkerCluster.Default.css" />
-    <link rel="stylesheet" href="css/Control.OSMGeocoder.css" />
-    <link rel="stylesheet" href="css/leaflet-measure.css" />
-    <link rel="stylesheet" href="css/nav.css" />
-    <title>COMUNIDADOS</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="http://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+  <link rel="stylesheet" href="css/L.Control.Locate.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/qgis2web_v2.css">
+  <link rel="stylesheet" href="css/MarkerCluster.css" />
+  <link rel="stylesheet" href="css/MarkerCluster.Default.css" />
+  <link rel="stylesheet" href="css/Control.OSMGeocoder.css" />
+  <link rel="stylesheet" href="css/leaflet-measure.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <title>COMUNIDADOS</title>
 </head>
 
 <body>
-    <nav class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded">
+  <nav class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded">
 
-        <span id="switchlangbtn">
+    <span id="switchlangbtn">
           <a href="./pr.html">
             <span>Versão em Português</span>
-            <img id="langflag" alt="Versão em português" src="./images/brazil_flag.png" aria-hidden="true" />
-            </a>
-            <a href="./index.html">
+    <img id="langflag" alt="Versão em português" src="./images/brazil_flag.png" aria-hidden="true" />
+    </a>
+    <a href="./index.html">
             <span>English Version</span>
             <img id="langflag" alt="English Version" src="./images/us_flag.png" aria-hidden="true" />
           </a>
-        </span>
-        <a class="navbar-brand">
-            <div class="app-name">
-                <img src="" /> COMUNIDADOS
-            </div>
-        </a>
-        <a id="info-btn">
+    </span>
+    <a class="navbar-brand">
+      <div class="app-name">
+        <img src="" /> COMUNIDADOS
+      </div>
+    </a>
+    <a id="info-btn">
       <span>About this Application</span>
       <button type="button" id="#help-modal" class="btn btn-primary" data-toggle="modal" data-target="#help-popup">
         <i class="fa fa-info" aria-hidden="true"></i>
       </button>
     </a>
-    </nav>
+  </nav>
 
 
-    <!-- Modal popup to describe the application-->
-    <div class="modal fade" id="help-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">About this application</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <!-- Modal popup to describe the application-->
+  <div class="modal fade" id="help-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">About this application</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-                </div>
-                <div class="modal-body">
-                    This application was built with the help of Kristine Stiphany, Kirsten Larson, and Nathan Brigmon during the Chapa Project which was funded by the National Science Foundation and the University of Texas at Austin.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
         </div>
+        <div class="modal-body">
+          This application was built with the help of Kristine Stiphany, Kirsten Larson, and Nathan Brigmon during the Chapa Project which was funded by the National Science Foundation and the University of Texas at Austin.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <div id="swipe-wrapper" class="row">
-        <div class="site-selection-container col-12">
-            <select class="site-selection" style="min-width: 120px; max-width: 150px">
+  <div id="swipe-wrapper" class="row">
+    <div class="site-selection-container col-12">
+      <select class="site-selection" style="min-width: 120px; max-width: 150px">
         <option value=""></option>
         <option value="helio_bl">Heliopolis - Block</option>
         <option value="helio_di">Heliopolis - District</option>
         <option value="sao_bl">Sao Francisco - Block</option>
         <option value="sao_di">Sao Francisco - District</option>
       </select>
-            <!-- </div>
+      <!-- </div>
   <div class="site-selection-container col-8"> -->
-            <select class="metric-selection" style="min-width: 180px; max-width: 250px">
+      <select class="metric-selection" style="min-width: 180px; max-width: 250px">
         <option value=""></option>
         <option value='qual' count='random' label='Q1_3' legend='none'>District</option>
         <option value='qual' count='4' label='Q3' legend='none'>Development Type</option>
@@ -133,54 +133,60 @@
         <option value='diver' max='1' min='0' breaks='0,0.25,0.5,0.75' label='Q126' legend='affirm'>Sense Of living In An  Optimum Location</option>
         <option value='diver' max='1' min='0' breaks='0,0.25,0.5,0.75' label='Q185' legend='affirm'>Access To A Community Leader</option>
       </select>
-        </div>
-
     </div>
-
-    <div id="map"></div>
-    <div id="attribute-legend-area" class="cartodb-legend-stack">
-        <div id="feature-info"></div>
-        <div id="color-range" class="cartodb-legend choropleth" style="display: block;">
-            <h4 id="selected_column_title"></h4>
-            <ul>
-                <li class="min">0</li>
-                <li class="max">13295</li>
-                <li class="graph count_441">
-                    <div class="colors">
-                        <div class="quartile"></div>
-                        <div class="quartile"></div>
-                        <div class="quartile"></div>
-                        <div class="quartile"></div>
-                        <div class="quartile"></div>
-                    </div>
-                </li>
-            </ul>
-        </div>
+  </div>
+  <div id="map-row" class="row">
+      <div id="map1"></div>
+      <div id="map2"></div>
+  </div>
+  <a id="base-map-selection" class="btn leaflet-bar leaflet-control leaflet-touch">
+    <span>Toggle Base Maps</span>
+    <i class="fa fa-map-o" aria-hidden="true"></i>
+  </a>
+  <!-- <div id="map2"></div> -->
+  <div id="attribute-legend-area" class="cartodb-legend-stack">
+    <div id="feature-info"></div>
+    <div id="color-range" class="cartodb-legend choropleth" style="display: block;">
+      <h4 id="selected_column_title"></h4>
+      <ul>
+        <li class="min">0</li>
+        <li class="max">13295</li>
+        <li class="graph count_441">
+          <div class="colors">
+            <div class="quartile"></div>
+            <div class="quartile"></div>
+            <div class="quartile"></div>
+            <div class="quartile"></div>
+            <div class="quartile"></div>
+          </div>
+        </li>
+      </ul>
     </div>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-    <script src="http://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-    <script src="js/qgis2web_expressions.js"></script>
-    <script src="js/L.Control.Locate.min.js"></script>
-    <script src="js/multi-style-layer.js"></script>
-    <script src="js/leaflet-heat.js"></script>
-    <script src="js/leaflet-svg-shape-markers.min.js"></script>
-    <script src="js/leaflet.rotatedMarker.js"></script>
-    <script src="js/OSMBuildings-Leaflet.js"></script>
-    <script src="js/leaflet-hash.js"></script>
-    <script src="js/leaflet-tilelayer-wmts.js"></script>
-    <script src="js/Autolinker.min.js"></script>
-    <script src="js/Control.OSMGeocoder.js"></script>
-    <script src="js/leaflet-measure.js"></script>
-    <script src="js/leaflet.markercluster.js"></script>
-    <script src="data/saofrancisco0729.js"></script>
-    <script src="data/heliopolis0729.js"></script>
-    <script src="data/heliopolisdistrict.js"></script>
-    <script src="data/saofranciscodistrict.js"></script>
-    <script src="js/customMapFunctions.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </div>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+  <script src="http://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+  <script src="js/qgis2web_expressions.js"></script>
+  <script src="js/L.Control.Locate.min.js"></script>
+  <script src="js/multi-style-layer.js"></script>
+  <script src="js/leaflet-heat.js"></script>
+  <script src="js/leaflet-svg-shape-markers.min.js"></script>
+  <script src="js/leaflet.rotatedMarker.js"></script>
+  <script src="js/OSMBuildings-Leaflet.js"></script>
+  <script src="js/leaflet-hash.js"></script>
+  <script src="js/leaflet-tilelayer-wmts.js"></script>
+  <script src="js/Autolinker.min.js"></script>
+  <script src="js/Control.OSMGeocoder.js"></script>
+  <script src="js/leaflet-measure.js"></script>
+  <script src="js/leaflet.markercluster.js"></script>
+  <script src="data/saofrancisco0729.js"></script>
+  <script src="data/heliopolis0729.js"></script>
+  <script src="data/heliopolisdistrict.js"></script>
+  <script src="data/saofranciscodistrict.js"></script>
+  <script src="js/customMapFunctions_v2.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </body>
 
 </html>
