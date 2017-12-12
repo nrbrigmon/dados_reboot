@@ -249,20 +249,21 @@ jQuery(document).ready(function($) {
 		}
 
 		//reset the metric selection
-		$('.metric-selection1, .metric-selection2')
+		$('.dist-metric-selection, .blck-metric-selection')
 			.val(null)
 			.trigger('change');
 	});
 
-	$('.metric-selection1, .metric-selection2').select2({
+	$('.dist-metric-selection, .blck-metric-selection').select2({
 		placeholder: 'Select a metric'
 	});
-	var $metricSelect2 = $('.metric-selection1, .metric-selection2');
+	var $metricSelect2 = $('.dist-metric-selection, .blck-metric-selection');
 	$metricSelect2.on('select2:select', function(e) {
+		//label='C1568'
+		columnLookup = e.params.data.title;
 		//qual, sequential or diverging
 		metricType = e.params.data.element.attributes.value.value;
-		//label='C1568'
-		columnLookup = e.params.data.element.attributes.label.value.trim();
+
 		//> Gender - Male <
 		selection = e.params.data.text;
 		//max='616'
@@ -308,7 +309,9 @@ jQuery(document).ready(function($) {
 			}
 			var customPopUp =
 				popupLocation(layer.feature.properties['LABEL']) +
-				'<p><b>N: </b>' +
+				'<p><b>' +
+				selection +
+				': </b>' +
 				textDisplay +
 				'</p>';
 			layer.bindPopup(customPopUp);
@@ -338,7 +341,9 @@ jQuery(document).ready(function($) {
 			}
 			var customPopUp =
 				popupLocation(layer.feature.properties['LABEL']) +
-				'<p><b>N: </b>' +
+				'<p><b>' +
+				selection +
+				': </b>' +
 				textDisplay +
 				'</p>';
 			layer.bindPopup(customPopUp);

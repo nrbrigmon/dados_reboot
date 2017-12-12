@@ -214,7 +214,7 @@ jQuery(document).ready(function($) {
 
 	let shape_type = 'districts';
 	$('.site-selection').select2({
-		placeholder: 'Districts',
+		placeholder: 'Distritos',
 		minimumResultsForSearch: Infinity
 	});
 
@@ -255,7 +255,7 @@ jQuery(document).ready(function($) {
 	});
 
 	$('.metric-selection1, .metric-selection2').select2({
-		placeholder: 'Select a metric'
+		placeholder: 'Selecione uma métrica'
 	});
 	var $metricSelect2 = $('.metric-selection1, .metric-selection2');
 	$metricSelect2.on('select2:select', function(e) {
@@ -307,7 +307,7 @@ jQuery(document).ready(function($) {
 				}
 			}
 			var customPopUp =
-				popupLocation(layer.feature.properties['LABEL']) +
+				popupLocationPR(layer.feature.properties['LABEL']) +
 				'<p><b>N: </b>' +
 				textDisplay +
 				'</p>';
@@ -337,7 +337,7 @@ jQuery(document).ready(function($) {
 				}
 			}
 			var customPopUp =
-				popupLocation(layer.feature.properties['LABEL']) +
+				popupLocationPR(layer.feature.properties['LABEL']) +
 				'<p><b>N: </b>' +
 				textDisplay +
 				'</p>';
@@ -351,7 +351,7 @@ jQuery(document).ready(function($) {
 		$('#description-legend').show();
 
 		$('#selected_column_title').html(selection);
-		$('#about-text').html(getDescription(columnLookup));
+		$('#about-text').html(getDescriptionPR(columnLookup));
 	});
 
 	$('#background-slider').slider({

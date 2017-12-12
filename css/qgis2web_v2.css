@@ -12,6 +12,7 @@ body {
 	width: 100%;
 	position: fixed;
 }
+
 #map1,
 #map2 {
 	background-color: #ffffff;
@@ -23,9 +24,6 @@ body {
 }
 #map2 {
 	border-left: inset white;
-}
-.navbar-brand {
-	/*margin: 0 auto;*/
 }
 #swipe-wrapper {
 	margin-left: 0px;
@@ -144,7 +142,7 @@ body {
 	-webkit-transition: display 0.25s ease-in-out;
 }
 
-#color-range {
+#description-legend {
 	display: none;
 }
 
@@ -312,12 +310,12 @@ a#base-map-selection:hover span {
 	top: 7px;
 }
 ul#switchlangbtn a:hover span#portflag {
-	margin-left: -129px;
-	top: 17px;
+	margin-left: -130px;
+	top: 1px;
 }
 ul#switchlangbtn a:hover span#usflag {
-	margin-left: 34px;
-	top: 17px;
+	margin-left: 25px;
+	top: 1px;
 }
 div.slider-container:hover > span {
 	top: 20px;
@@ -328,8 +326,13 @@ div.slider-container:hover > span {
 	font-size: 14px;
 }
 /* flags for switching languages*/
+#switchlangbtn {
+	position: absolute;
+	left: 50%;
+	margin-left: -22px !important;
+}
 #switchlangbtn > li:first-child {
-	margin-right: 2px;
+	margin-right: 10px;
 	/*position: fixed;
 	top: 10px;
 	left: 10px;*/
@@ -339,6 +342,14 @@ div.slider-container:hover > span {
 	margin-right: 10px;
 }
 /*navbar section*/
+
+.navbar-brand {
+	/*margin: 0 auto;*/
+	font-size: 1rem;
+}
+ul.nav li a {
+	color: #000000e6;
+}
 ul.nav li a:focus {
 	outline: none;
 }

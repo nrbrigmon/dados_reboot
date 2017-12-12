@@ -5,7 +5,126 @@ var toTitleCase = function(str) {
 	});
 };
 
+function legendHelper(cue) {
+	return legendLookup[cue];
+}
+
+function getDescription(val) {
+	return descriptionLookup[val];
+}
+
+function getDescriptionPR(val) {
+	return descriptionLookupPR[val];
+}
+
+function highlightFeature(e) {
+	var highlightLayer = e.target;
+	highlightLayer.openPopup();
+}
+
+L.ImageOverlay.include({
+	getBounds: function() {
+		return this._bounds;
+	}
+});
+
+function initial_style() {
+	return {
+		opacity: 0.6,
+		color: 'rgb(0,0,0)',
+		dashArray: '',
+		lineCap: 'butt',
+		lineJoin: 'miter',
+		weight: 1.0,
+		fillOpacity: 0.6,
+		fillColor: '#333333'
+	};
+}
+
+function popupLocation(label) {
+	return '<p><b>LOCATION: </b>' + toTitleCase(label.substr(2, 20)) + '</p>';
+}
+
+function popupLocationPR(label) {
+	return (
+		'<p><b>LOCALIZAÇÃO: </b>' + toTitleCase(label.substr(2, 20)) + '</p>'
+	);
+}
+
+function basic_popup(feature, layer) {
+	layer.on({
+		click: highlightFeature
+	});
+	var popupContent = popupLocation(feature.properties['LABEL']);
+	layer.bindPopup(popupContent);
+}
+
+function basic_popupPR(feature, layer) {
+	layer.on({
+		click: highlightFeature
+	});
+	var popupContent = popupLocation(feature.properties['LABEL']);
+	layer.bindPopup(popupContent);
+}
+
+function initial_style() {
+	return {
+		opacity: 0.6,
+		color: 'rgb(0,0,0)',
+		dashArray: '',
+		lineCap: 'butt',
+		lineJoin: 'miter',
+		weight: 1.0,
+		fillOpacity: 0.6,
+		fillColor: '#333333'
+	};
+}
+
+function myFillOpacity(x) {
+	if (x == null) {
+		return 0.1;
+	} else {
+		return 0.7;
+	}
+}
+
+function myStrokeOpacity(x) {
+	if (x == null) {
+		return 0.1;
+	} else {
+		return 0.6;
+	}
+}
+
+function myFillColor(x) {
+	if (x == null) {
+		return '#999999';
+	} else {
+		if (metricType == 'diver') {
+			return x >= columnMax
+				? chosenPallete[4]
+				: x >= columnBreaks[3]
+					? chosenPallete[3]
+					: x >= columnBreaks[2]
+						? chosenPallete[2]
+						: x >= columnBreaks[1]
+							? chosenPallete[1]
+							: chosenPallete[0];
+		} else {
+			return x > columnBreaks[3]
+				? chosenPallete[4]
+				: x > columnBreaks[2]
+					? chosenPallete[3]
+					: x > columnBreaks[1]
+						? chosenPallete[2]
+						: x > columnBreaks[0] ? chosenPallete[1] : chosenPallete[0];
+		}
+	}
+}
 var toCurrency = function(num) {
+	if (num == null) {
+		return 'N/A';
+	}
 	var txt = parseFloat(num)
 		.toFixed(2)
 		.toString();
