@@ -20,7 +20,10 @@
 <body>
   <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
     <a class="navbar-brand nav-link" href="">
+      <!-- <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
       COMUNIDADOS
+      <!-- <img id="langflag" alt="Versão em português" width="30" height="20" src="./images/brazil_flag.png" aria-hidden="true" /> -->
+      <!-- <img id="langflag" alt="English Version" width="30" height="20" src="./images/us_flag.png" aria-hidden="true" /> -->
     </a>
     <ul class="nav justify-content-end">
       <li class="nav-item">
@@ -82,16 +85,17 @@
   </div>
 
   <div id="swipe-wrapper" class="row">
-    <div class="row">
-      <div class="col align-help">
-          <select class="site-selection" style="width: 200px;text-align:left">
+    <div class="site-selection-container col-12">
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <select class="site-selection" style="width: 200px;">
             <option value=""></option>
               <option value="districts">Districts</option>
               <option value="blocks">Blocks</option>
           </select>
-      </div>
-      <div class="col" id="district-dropdown" style="text-align:left">
-          <select class="metric-selection1" style="width: 200px; text-align:left">
+        </li>
+        <li class="nav-item" id="district-dropdown">
+          <select class="metric-selection1" style="width: 200px">
             <option value=""></option>
             <optgroup label="Social">
                 <option value='sequ' max='75' min='20' breaks='20,39.483,44.511,49.54' label='AGE'>Age</option>
@@ -158,9 +162,9 @@
                 <option disabled>Coming Soon...</option>
             </optgroup>
             </select>
-        </div>
-        <div class="col" id="block-dropdown" style="display:none; text-align:left">
-          <select class="metric-selection2" style="width: 200px; text-align:left">
+        </li>
+        <li class="nav-item" id="block-dropdown" style="display:none">
+          <select class="metric-selection2" style="width: 200px">
             <optgroup label="Social">
                 <option value='sequ' max='75' min='20' breaks='20,36.387,44.594,52.801' label='AGE'>Age</option>
                 <!-- <option value='sequ' max='1' min='0' breaks='0,0.023,0.27,0.517' label='GEN_M'>GEN_M</option> -->
@@ -227,7 +231,8 @@
                     <option disabled>Coming Soon...</option>
                 </optgroup>
             </select>
-        </div>
+        </li>
+      </ul>
     </div>
   </div>
   <div id="map-row" class="row">

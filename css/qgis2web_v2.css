@@ -31,6 +31,9 @@ body {
 	padding-left: 0px;
 	padding-right: 0px;
 }
+#swipe-wrapper .col {
+	padding: 0px 3px 0px 3px;
+}
 #swipe-wrapper > * {
 	z-index: 999;
 	background: black;
@@ -326,20 +329,16 @@ div.slider-container:hover > span {
 	font-size: 14px;
 }
 /* flags for switching languages*/
-#switchlangbtn {
-	position: absolute;
-	left: 50%;
-	margin-left: -22px !important;
+.align-help {
+	text-align: right;
+	margin-left: 3px;
 }
-#switchlangbtn > li:first-child {
-	margin-right: 10px;
-	/*position: fixed;
-	top: 10px;
-	left: 10px;*/
-	/* display: inline; */
+.align-help > * {
+	text-align: left;
 }
 .site-selection-container > ul > li:first-child {
-	margin-right: 10px;
+	margin-left: 23px;
+	margin-right: 6px;
 }
 /*navbar section*/
 
@@ -348,7 +347,7 @@ div.slider-container:hover > span {
 	font-size: 1rem;
 }
 ul.nav li a {
-	color: #000000e6;
+	color: #222222;
 }
 ul.nav li a:focus {
 	outline: none;
@@ -406,6 +405,10 @@ ul.nav li a:focus {
 @media screen and (max-width: 600px) {
 	#navbar-title {
 		display: none;
+	}
+	.navbar,
+	.navbar .navbar-brand {
+		font-size: 10px;
 	}
 	.leaflet-control-measure.leaflet-control {
 		display: none;
