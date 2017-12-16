@@ -188,6 +188,7 @@ var _valueConversion = function(label, value) {
 
 var nonPercentArray = 
 [
+	'AGE',
 	'ASSAULTO_IMM_VIC', 
 	'BARULHO_IMM_VIC', 
 	'BLDG_QLTY', 
@@ -207,7 +208,7 @@ var getTextDisplay = function(columnLookup, layerAttributes){
 		return toCurrency(
 			layerAttributes
 		);
-	} else if ($.inArray(columnLookup, nonPercentArray) > 0) {
+	} else if ($.inArray(columnLookup, nonPercentArray) >= 0) {
 		if (layerAttributes) {
 			return parseFloat(
 				layerAttributes

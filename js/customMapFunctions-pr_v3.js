@@ -216,7 +216,7 @@ jQuery(document).ready(function($) {
 				opacity: myStrokeOpacity(layerVal2)
 			});
 
-			textDisplay = getTextDisplay(columnLookup, layerVal1);
+			textDisplay = getTextDisplay(columnLookup, layerVal2);
 			
 			var customPopUp =
 				popupLocationPR(layer.feature.properties['LABEL']) +
