@@ -1,3 +1,101 @@
+//base maps available
+var basemap0 = L.tileLayer(
+	'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
+	{
+		attribution:
+			'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+		subdomains: 'abcd',
+		maxZoom: 20
+	}
+);
+var basemap_0 = L.tileLayer(
+	'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
+	{
+		attribution:
+			'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+		subdomains: 'abcd',
+		maxZoom: 20
+	}
+);
+var basemap1 = L.tileLayer(
+	'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png',
+	{
+		maxZoom: 20,
+		attribution:
+			'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}
+);
+var basemap_1 = L.tileLayer(
+	'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png',
+	{
+		maxZoom: 20,
+		attribution:
+			'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}
+);
+var aerialHybrid2 = L.layerGroup([
+	L.tileLayer(
+		'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+		{
+			attribution:
+				'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+		}
+	),
+	L.tileLayer(
+		'http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lines/{z}/{x}/{y}.{ext}',
+		{
+			attribution:
+				'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+			subdomains: 'abcd',
+			minZoom: 2,
+			maxZoom: 20,
+			ext: 'png'
+		}
+	),
+	L.tileLayer(
+		'http://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.{ext}',
+		{
+			attribution:
+				'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+			subdomains: 'abcd',
+			minZoom: 2,
+			maxZoom: 20,
+			ext: 'png'
+		}
+	)
+]);
+var aerialHybrid_2 = L.layerGroup([
+	L.tileLayer(
+		'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+		{
+			attribution:
+				'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+		}
+	),
+	L.tileLayer(
+		'http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lines/{z}/{x}/{y}.{ext}',
+		{
+			attribution:
+				'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+			subdomains: 'abcd',
+			minZoom: 2,
+			maxZoom: 20,
+			ext: 'png'
+		}
+	),
+	L.tileLayer(
+		'http://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.{ext}',
+		{
+			attribution:
+				'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+			subdomains: 'abcd',
+			minZoom: 2,
+			maxZoom: 20,
+			ext: 'png'
+		}
+	)
+]);
+
 //*   color schemes  *//
 var sequentialSchemes = {
 	1: ['#ffffb2', '#fecc5c', '#fd8d3c', '#f03b20', '#bd0026'],

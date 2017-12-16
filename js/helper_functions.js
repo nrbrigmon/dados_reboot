@@ -185,3 +185,43 @@ var _valueConversion = function(label, value) {
 		return value;
 	}
 };
+
+var nonPercentArray = 
+[
+	'ASSAULTO_IMM_VIC', 
+	'BARULHO_IMM_VIC', 
+	'BLDG_QLTY', 
+	'DROGA_IMM_VIC',
+	'FUNK_IMM_VIC',
+	'LIXO_IMM_VIC',
+	'NADA_IMM_VIC',
+	'NUM_FAM_LOT',
+	'NUM_FLR',
+	'NUM_PPL_HSHD',
+	'NUM_SCH_AG',
+	'NUM_YR_HSE',
+	'NUM_YR_SP'
+];
+var getTextDisplay = function(columnLookup, layerAttributes){
+	if (columnLookup === 'INCOME') {
+		return toCurrency(
+			layerAttributes
+		);
+	} else if ($.inArray(columnLookup, nonPercentArray) > 0) {
+		if (layerAttributes) {
+			return parseFloat(
+				layerAttributes
+			).toFixed(1);
+		} else {
+			return layerAttributes;
+		}
+	} else {
+		if (layerAttributes) {
+			return toPercent(
+				layerAttributes
+			);
+		} else {
+			return layerAttributes;
+		}
+	}
+}

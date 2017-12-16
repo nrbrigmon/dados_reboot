@@ -59,8 +59,8 @@ body {
 	padding-top: 13px;
 }
 /*** leaflet styles ***/
-.leaflet-left {
-	/*margin-top: 50px;*/
+.leaflet-popup-content p {
+	margin: 0px 0 10px 0px;
 }
 .leaflet-control-measure.leaflet-control {
 	/*margin-top: 60px;*/
@@ -152,7 +152,7 @@ body {
 #selected_column_title {
 	font-size: 13px !important;
 	color: #444;
-	text-align: center;
+	/*text-align: center;*/
 	margin: -5px 0px 5px 0px;
 }
 
