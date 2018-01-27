@@ -120,10 +120,7 @@ jQuery(document).ready(function($) {
 		// console.log(placedLocation);
 		//asign random id to placed marker, because we will need it layer
 		newMarker.nateObj = placedId;
-		markerPoints.addLayer(newMarker);
-		
-		markerPoints.newMarker.placedId.popup("open");
-		
+		markerPoints.addLayer(newMarker);		
 	});
 
 	///drawstop can happen by either clicking CANCEL or FINISHING a CREATE/EDIT
