@@ -1,2 +1,4 @@
-node_modules/*
-archives/*
+node_modules/
+archive/
+
+.DS_Store
