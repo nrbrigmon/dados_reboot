@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" integrity="sha256-iYUgmrapfDGvBrePJPrMWQZDcObdAcStKBpjP3Az+3s=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.0/leaflet.draw.css" integrity="sha256-XzD3RpaHPv7lzX9qt+2n1j5cWj48O24KsgaGYpKN8x8=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+  <link rel="stylesheet" type="text/css" href="./css/single_page.css">
+  <!-- <link rel="stylesheet" href="css/nav.css" /> -->
+  <title>COMUNIDADOS</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <a class="navbar-brand nav-link" href="">
+      COMUNIDADOS
+    </a>
+    <!-- <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a href="" class="nav-link" id="info-btn" data-toggle="modal" data-target="#about-popup">ABOUT
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="nav-link" id="contact-btn" data-toggle="modal" data-target="#contact-popup">HOW TO USE</a>
+      </li>
+      <li class="nav-item">
+        <a href="./pr.html" class="nav-link">PORTUGUÊS</a>
+      </li>
+    </ul> -->
+  </nav>
+
+
+
+  
+
+  <div id="swipe-wrapper" class="row">
+    <div class="row">
+      <div class="col" style="text-align:center">
+          <button class="btn btn-default" id="find_me">Find me!</button>
+      </div>
+    </div>
+  </div>
+  <div id="map-row" class="row">
+    <div id="map1"></div>
+  </div>
+  <a id="base-map-selection" class="btn leaflet-bar leaflet-control leaflet-touch">
+    <span>Toggle Base Maps</span>
+    <i class="fa fa-map-o" aria-hidden="true"></i>
+  </a>
+
+  <div id="comment-container" class="col-xs-12 col-sm-6 leaflet-bar">
+    <form>
+      <div class="form-group">
+        <label for="inputName">Name</label>
+        <input type="text" class="form-control" id="inputName" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <label for="inputComment">Comment</label>
+        <textarea class="form-control" rows="2" id="inputComment" placeholder="Comment"></textarea>
+      </div>
+    </form>
+    <button type="submit" class="btn btn-primary" id="saveComment">
+      <i class="fa fa-check" aria-hidden="true"></i>
+    </button>
+    <button class="btn btn-default" id="cancelComment">
+      <i class="fa fa-ban" aria-hidden="true"></i>
+    </button>
+  </div>
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js" integrity="sha256-CNm+7c26DTTCGRQkM9vp7aP85kHFMqs9MhPEuytF+fQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.0/leaflet.draw.js" integrity="sha256-LKpDNsBryNY32XwTLwo/vajyDZQQMdkG/zUJDXG+UPg=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="js/variable_lookup.js"></script>
+  <script src="js/helper_functions.js"></script>
+  <script src="js/util/leaflet-hash.js"></script>
+  <script src="js/single_page_app.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/shortid@2.2.8/index.min.js"></script> -->
+</body>
+
+</html>

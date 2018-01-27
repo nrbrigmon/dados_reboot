@@ -4,13 +4,15 @@
   "description": "app for visualizing it + healthcare providers with demographic info",
   "main": "index.js",
   "scripts": {
-    "test": "go"
+    "start": "nodemon app.js",
+    "test": "nodemon app_single.js"
   },
   "author": "nate b",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
     "merge-descriptors": "^1.0.1",
-    "nodemon": "^1.12.5"
+    "nodemon": "^1.12.5",
+    "shortid": "^2.2.8"
   }
 }
