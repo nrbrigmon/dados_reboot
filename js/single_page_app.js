@@ -18,14 +18,16 @@ jQuery(document).ready(function($) {
 	var map = L.map('map1', {
 		center: ATX_center,
 		zoom: 13,
-		// zoomControl: false,
+		zoomControl: false,
 		maxZoom: 20,
 		minZoom: 2,
 		inertia: true,
 		inertiaDeceleration: 6000
 	});
 	// STILL LOOKING FOR A WAY TO MOVE THE ZOOM CONTORL TO BOTTOM RIGHT
-
+	L.control.zoom({
+		position:'topright'
+   }).addTo(map);
 	// var hash = new L.Hash(map); //add hashes to html address to easy share locations
 	
 	/* BASEMAP CONFIGURATION  */
@@ -86,21 +88,15 @@ jQuery(document).ready(function($) {
 	let AWS_COMMENT_URL = 'https://oq35syezse.execute-api.ap-southeast-1.amazonaws.com/sat127/comments'
 	// let AWS_USERS_URL;
 	// console.log('starting request to AWS');
-	// ///aws here
-		$.ajax({
-			url: AWS_COMMENT_URL,
-			type: 'GET'
-		}).done(function(data) {
-			// console.log('data received from AWS');
-			loadMarkersOnInit(data.body)
-			// console.log(data.body);
-		});
 
-
-
-
-
-
+	// $.ajax({
+	// 	url: AWS_COMMENT_URL,
+	// 	type: 'GET'
+	// }).done(function(data) {
+	// 	// console.log('data received from AWS');
+	// 	loadMarkersOnInit(data.body)
+	// 	// console.log(data.body);
+	// });
 
 
 	let placementBool = false;
@@ -201,6 +197,7 @@ jQuery(document).ready(function($) {
 		});
 		commentDone();
 	});
+
 	$("#cancelComment").on('click', function (){
 		commentDone();
 	});
@@ -243,12 +240,16 @@ jQuery(document).ready(function($) {
 		//asign random id to placed marker, because we will need it layer
 		newMarker.nateObj = placedId;
 		markerPoints.addLayer(newMarker);
+		//add popup automatically on visit
 		markerPoints.eachLayer(function (marker) {
 			console.log(marker);
 			if (marker.nateObj === placedId){
 				marker.bindPopup('Your location! Care to comment?').openPopup();
 			}
 		});
+		//open up comment box and hide toolbar
+		$("div.leaflet-draw.leaflet-control").hide();
+		$("#comment-container").show();
 
 	}
 
