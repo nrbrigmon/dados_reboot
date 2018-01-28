@@ -8,8 +8,6 @@ var metricType,
 	chosenPallete;
 jQuery(document).ready(function($) {
 	'use strict';
-
-
 	/* MAP SETUP*/
 	let ATX_center = [30.265966473966337, -97.744399083313];
 	let heliolopilis_center = [-23.6135, -46.59];
@@ -104,16 +102,13 @@ jQuery(document).ready(function($) {
 	let placedId;
 	let placedLocation;
 	//drawcreated happens when a feature is offish created
-	map.on('draw:created ', function (e) {
-		// console.log('draw creation');
+	map.on('draw:created', function (e) {
 		placementBool = true; //true it was created
 
 		placedId = String(Date.now())+String(Math.floor(Math.random()*99999 ) ); //crate random Id
-		// console.log(e);
 		placedLocation = e.layer.getLatLng(); //hold array;
 		// add layer
 		let newMarker = e.layer; 
-		// console.log(placedLocation);
 		//asign random id to placed marker, because we will need it layer
 		newMarker.nateObj = placedId;
 		markerPoints.addLayer(newMarker);		
@@ -121,37 +116,41 @@ jQuery(document).ready(function($) {
 
 	///drawstop can happen by either clicking CANCEL or FINISHING a CREATE/EDIT
 	map.on('draw:drawstop ', function (e) {
-		// console.log(e);
-		// console.log('draw stoped...');
+		console.log(e);
 		//marker was not placed... cancel comment action
 		if (placementBool === false){
 			return;
 		}
-
-		$("div.leaflet-draw.leaflet-control").hide();
 		$("#comment-container").show();
 		
 	});
 
 
 	const commentDone = function(){
-		console.log('comment done action');
 		placementBool = false;
 		
 		$("#inputName").val(''); //zero out inputs
 		$("#inputComment").val(''); //zero out inputs
 
 		$("#comment-container").hide();
-		$("div.leaflet-draw.leaflet-control").show();
+		$("#markerCancel").trigger('click');		
+	}
+
+	let markerDrawer = new L.Draw.Marker(map);
+	
+	const enableDrawing = function(){
+		markerDrawer.enable();
+
+	}
+	const disableDrawing = function(){
+		markerDrawer.disable();
+
 	}
 	const createPopUp = function({date, marker}){
 		let dateText;
 		if (date){
-			// console.log(date);
 			let _d = new Date(date)
-			// console.log(_d);
 			dateText = _d.toLocaleString();
-			// console.log(dateText);
 		}
 		let dateHTML = (date ? '<small class="text-muted">'+String(dateText)+'</small>': '')
 		return	'<div class="card"><div class="card-body">'+
@@ -174,8 +173,6 @@ jQuery(document).ready(function($) {
 		
 		//create popup,
 		let markerPop = createPopUp(dbObj);
-		
-			
 
 		//bind popup to layer
 		markerPoints.eachLayer(function (marker) {
@@ -199,11 +196,35 @@ jQuery(document).ready(function($) {
 	});
 
 	$("#cancelComment").on('click', function (){
+		markerPoints.eachLayer(function (marker) {
+			console.log(marker);
+			console.log('loop')
+			if (marker.nateObj === placedId){
+				console.log('found');			
+				markerPoints.removeLayer(marker);	
+				console.log('removed');
+				
+			}
+		});
 		commentDone();
 	});
 
+	$("#markerDraw").on('click', function(){
+		$("#markerCancel").show();
+		$(this).hide();
+		enableDrawing();
+	});
 
-
+	$("#markerCancel").on('click', function(){
+		//if they placed the marker, and clicked cancel, trigger cancel comment instead
+		if (placementBool === true){
+			$("#cancelComment").trigger('click');
+			return;
+		}
+		$("#markerDraw").show();
+		$(this).hide();
+		disableDrawing();
+	});
 
 
 
@@ -228,21 +249,18 @@ jQuery(document).ready(function($) {
 		
 		
 		placementBool = true; //true it was created
-		
+		$("#markerDraw").hide();
+		$("#markerCancel").show();
 		placedId = String(Date.now())+String(Math.floor(Math.random()*99999 ) ); //crate random Id
-		// console.log(e);
 		// add layer
 		
-		
 		let newMarker = L.marker([localLat,localLng]);
-		// console.log(placedLocation);
 		placedLocation = newMarker.getLatLng(); //hold array;
 		//asign random id to placed marker, because we will need it layer
 		newMarker.nateObj = placedId;
 		markerPoints.addLayer(newMarker);
 		//add popup automatically on visit
 		markerPoints.eachLayer(function (marker) {
-			console.log(marker);
 			if (marker.nateObj === placedId){
 				marker.bindPopup('Your location! Care to comment?').openPopup();
 			}

@@ -65,7 +65,7 @@ body {
 	padding: .25em;
 }
 
-.leaflet-draw.leaflet-control > div.leaflet-draw-section:nth-child(2){
+div.leaflet-draw.leaflet-control{
 	display: none;
 }
 
@@ -85,6 +85,9 @@ body {
 	z-index: 105;
 }
 .leaflet-control-locate {
+	display: none;
+}
+#markerCancel{
 	display: none;
 }
 
