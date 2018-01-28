@@ -89,14 +89,14 @@ jQuery(document).ready(function($) {
 	// let AWS_USERS_URL;
 	// console.log('starting request to AWS');
 
-	// $.ajax({
-	// 	url: AWS_COMMENT_URL,
-	// 	type: 'GET'
-	// }).done(function(data) {
-	// 	// console.log('data received from AWS');
-	// 	loadMarkersOnInit(data.body)
-	// 	// console.log(data.body);
-	// });
+	$.ajax({
+		url: AWS_COMMENT_URL,
+		type: 'GET'
+	}).done(function(data) {
+		// console.log('data received from AWS');
+		loadMarkersOnInit(data.body)
+		// console.log(data.body);
+	});
 
 
 	let placementBool = false;
