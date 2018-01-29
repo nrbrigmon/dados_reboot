@@ -266,8 +266,14 @@ ul.nav li a:focus {
     right: 0px;
     top: 165px;
 }
-
-
+/* SEARCH FORM*/
+.search-input {
+	font-family:inherit
+}
+.search-input,
+.leaflet-control-search {
+	max-width:400px;
+}
 
 
 /*** tablet look ***/

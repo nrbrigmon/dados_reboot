@@ -197,12 +197,12 @@ jQuery(document).ready(function($) {
 
 	$("#cancelComment").on('click', function (){
 		markerPoints.eachLayer(function (marker) {
-			console.log(marker);
+			// console.log(marker);
 			console.log('loop')
 			if (marker.nateObj === placedId){
-				console.log('found');			
+				// console.log('found');			
 				markerPoints.removeLayer(marker);	
-				console.log('removed');
+				// console.log('removed');
 				
 			}
 		});
@@ -245,7 +245,7 @@ jQuery(document).ready(function($) {
 		let localLat = position.coords.latitude;
 		let localLng = position.coords.longitude;
 		let localZoom = 14;
-		map.setView([localLat,localLng], 15);
+		map.setView([localLat,localLng], localZoom);
 		
 		
 		placementBool = true; //true it was created
@@ -271,14 +271,33 @@ jQuery(document).ready(function($) {
 
 	}
 
+	
+	function myHandler(geojson) {
+		console.log('reg handler:')
+		console.log(geojson);
+	};
+	function mySelectionHandler(geojson) {
+		console.log('selection handler:')
+		let position = {
+			coords: {
+				latitude: geojson.geometry.coordinates[1],
+				longitude: geojson.geometry.coordinates[0]
+			}
+		}
+		panToPosition(position);
+	}
 
-
-
-
-
-
-
-
+	let photonControlOptions = {
+		  resultsHandler: myHandler,
+		  placeholder: 'Navigate to...',
+		  position: 'topleft',
+		  onSelected: mySelectionHandler
+	}
+	
+	
+	let searchControl = L.control.photon(photonControlOptions);
+	searchControl.addTo(map)
+	$(".photon-input").addClass("form-control");
 
 
 
