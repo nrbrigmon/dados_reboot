@@ -275,7 +275,24 @@ ul.nav li a:focus {
 	max-width:400px;
 }
 
+img.leaflet-marker-icon.leaflet-zoom-animated.leaflet-interactive{
+	content:url("./images/DADOS_CUSTOM_PIN.png");
+	margin-left: -20px;
+    margin-top: -35px;
+    width: 58px;
+    height: 37px;
+    /* transform: translate3d(513px, 253px, 0px); */
+    z-index: 253;
+}
 
+img.leaflet-marker-shadow.leaflet-zoom-animated{
+	content:url("./images/DADOS_PIN_SHADOW.png");
+	margin-left: -27px;
+    margin-top: -61px;
+    width: 50px;
+    height: 64px;
+    /* transform: translate3d(535px, 62px, 0px); */
+}
 /*** tablet look ***/
 @media screen and (max-width: 900px) {
 	/*#legendWrapper,

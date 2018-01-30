@@ -53,7 +53,16 @@ jQuery(document).ready(function($) {
 	$('#base-map-selection').trigger('click');
 
 	/** LEAFLET DRAW CONFIGURATION **/
-
+	let customIcon = new L.icon({
+		// iconUrl: './js/util/DADOS_CUSTOM_PIN.png',
+		// shadowUrl: './js/util/DADOS_PIN_SHADOW.png',
+		iconSize:     [35, 37], // size of the icon
+		shadowSize:   [50, 64], // size of the shadow
+		iconAnchor:   [20, 35], // point of the icon which will correspond to marker's location
+		shadowAnchor: [27, 61],  // the same for the shadow
+		popupAnchor:  [-3, -35] // point from which the popup should open relative to the iconAnchor
+	});
+    
 	//markers added to map
 	let markerPoints = new L.FeatureGroup();
 	map.addLayer(markerPoints);
@@ -116,9 +125,11 @@ jQuery(document).ready(function($) {
 
 	///drawstop can happen by either clicking CANCEL or FINISHING a CREATE/EDIT
 	map.on('draw:drawstop ', function (e) {
-		console.log(e);
+		// console.log(e);
 		//marker was not placed... cancel comment action
 		if (placementBool === false){
+			$("#markerCancel").trigger('click');		
+			
 			return;
 		}
 		$("#comment-container").show();
@@ -298,6 +309,8 @@ jQuery(document).ready(function($) {
 	let searchControl = L.control.photon(photonControlOptions);
 	searchControl.addTo(map)
 	$(".photon-input").addClass("form-control");
+
+
 
 
 
