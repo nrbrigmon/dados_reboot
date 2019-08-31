@@ -178,6 +178,12 @@ jQuery(document).ready(function($) {
 		//breaks='4,8,27,65'
 		columnBreaks = e.params.data.element.attributes.breaks.value;
 
+		//legend support
+		var legendCue = 0;
+		if (e.params.data.element.attributes.legend){
+			legendCue = e.params.data.element.attributes.legend.value
+		}
+
 		//get values, break into an array of numbers and cleanup a touch
 		columnBreaks = columnBreaks.split(',').map(function(elem, index) {
 			return parseFloat(Math.round(elem * 100) / 100).toFixed(5);
@@ -235,6 +241,27 @@ jQuery(document).ready(function($) {
 
 		$('#selected_column_title').html(selection);
 		$('#about-text').html(getDescription(columnLookup));
+
+
+	function legendHelper(cue){
+			return legendLookup[cue];
+	}
+	//updateLegend
+	$("#color-range").show();
+	
+	if (legendCue == 'none'){
+			$("#color-range li.max").html(legendHelper(legendCue)[1] + " " + columnMax);
+			$("#color-range li.min").html(legendHelper(legendCue)[0] + " " + columnMin);
+	} else {
+			$("#color-range li.max").html(legendHelper(legendCue)[1]);
+			$("#color-range li.min").html(legendHelper(legendCue)[0]);
+	}
+	
+	$("div.colors div").each(function(index, elem) {
+			// console.log(index);
+			$(elem).css("background-color", chosenPallete[index]);
+	});
+
 	});
 
 	$('#background-slider').slider({
@@ -252,3 +279,17 @@ jQuery(document).ready(function($) {
 
 	// $('#info-btn').trigger('click');
 }); //end of jQuery closure
+
+
+
+var legendLookup = {
+	'none':['Min:','Max:'],
+	'gender':['Female (1)','Male (2)'],
+	'affirm':['No (0)','Yes (1)'],
+	'edu':['Low (0)','High (4)'],
+	'commute':['Less than 15 min.(1)','More than 60 min.(4)'],
+	'duration':['0 Months (1)','12+ Months (3)'],
+	'secureA':['Low (0)','High (1)'],
+	'secureB':['Low (0)','High (2)'],
+	'superf':['Superficial (1)','Expansive (2)']
+}

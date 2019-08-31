@@ -81,6 +81,7 @@ function initial_style() {
 }
 
 function myFillOpacity(x) {
+	console.log(x)
 	if (x == null) {
 		return 0.1;
 	} else {
