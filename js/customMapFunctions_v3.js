@@ -243,24 +243,24 @@ jQuery(document).ready(function($) {
 		$('#about-text').html(getDescription(columnLookup));
 
 
-	function legendHelper(cue){
-			return legendLookup[cue];
-	}
-	//updateLegend
-	$("#color-range").show();
-	
-	if (legendCue == 'none'){
-			$("#color-range li.max").html(legendHelper(legendCue)[1] + " " + columnMax);
-			$("#color-range li.min").html(legendHelper(legendCue)[0] + " " + columnMin);
-	} else {
-			$("#color-range li.max").html(legendHelper(legendCue)[1]);
-			$("#color-range li.min").html(legendHelper(legendCue)[0]);
-	}
-	
-	$("div.colors div").each(function(index, elem) {
-			// console.log(index);
-			$(elem).css("background-color", chosenPallete[index]);
-	});
+		function legendHelper(cue){
+				return legendLookup[cue];
+		}
+		//updateLegend
+		$("#color-range").show();
+		
+		if (legendCue == 'none'){
+				$("#color-range li.max").html(legendHelper(legendCue)[1] + " " + columnMax);
+				$("#color-range li.min").html(legendHelper(legendCue)[0] + " " + columnMin);
+		} else {
+				$("#color-range li.max").html(legendHelper(legendCue)[1]);
+				$("#color-range li.min").html(legendHelper(legendCue)[0]);
+		}
+		
+		$("div.colors div").each(function(index, elem) {
+				// console.log(index);
+				$(elem).css("background-color", chosenPallete[index]);
+		});
 
 	});
 
