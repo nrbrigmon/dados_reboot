@@ -263,6 +263,7 @@ jQuery(document).ready(function($) {
 		columnLookup = e.params.data.title;
 		//qual, sequential or diverging
 		metricType = e.params.data.element.attributes.value.value;
+
 		//> Gender - Male <
 		selection = e.params.data.text;
 		//max='616'
@@ -306,7 +307,6 @@ jQuery(document).ready(function($) {
 					textDisplay = layer.feature.properties[columnLookup];
 				}
 			}
-			
 			var customPopUp =
 				popupLocation(layer.feature.properties['LABEL']) +
 				'<p><b>' +
