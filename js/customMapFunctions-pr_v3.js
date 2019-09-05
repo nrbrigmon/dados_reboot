@@ -35,6 +35,102 @@ jQuery(document).ready(function($) {
 	});
 	// var hash = new L.Hash(map2); //add hashes to html address to easy share locations
 
+	var basemap0 = L.tileLayer(
+		'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
+		{
+			attribution:
+				'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+			subdomains: 'abcd',
+			maxZoom: 20
+		}
+	);
+	var basemap_0 = L.tileLayer(
+		'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
+		{
+			attribution:
+				'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+			subdomains: 'abcd',
+			maxZoom: 20
+		}
+	);
+	var basemap1 = L.tileLayer(
+		'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png',
+		{
+			maxZoom: 20,
+			attribution:
+				'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+		}
+	);
+	var basemap_1 = L.tileLayer(
+		'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png',
+		{
+			maxZoom: 20,
+			attribution:
+				'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+		}
+	);
+	var aerialHybrid2 = L.layerGroup([
+		L.tileLayer(
+			'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+			{
+				attribution:
+					'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+			}
+		),
+		L.tileLayer(
+			'http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lines/{z}/{x}/{y}.{ext}',
+			{
+				attribution:
+					'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+				subdomains: 'abcd',
+				minZoom: 2,
+				maxZoom: 20,
+				ext: 'png'
+			}
+		),
+		L.tileLayer(
+			'http://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.{ext}',
+			{
+				attribution:
+					'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+				subdomains: 'abcd',
+				minZoom: 2,
+				maxZoom: 20,
+				ext: 'png'
+			}
+		)
+	]);
+	var aerialHybrid_2 = L.layerGroup([
+		L.tileLayer(
+			'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+			{
+				attribution:
+					'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+			}
+		),
+		L.tileLayer(
+			'http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lines/{z}/{x}/{y}.{ext}',
+			{
+				attribution:
+					'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+				subdomains: 'abcd',
+				minZoom: 2,
+				maxZoom: 20,
+				ext: 'png'
+			}
+		),
+		L.tileLayer(
+			'http://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.{ext}',
+			{
+				attribution:
+					'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+				subdomains: 'abcd',
+				minZoom: 2,
+				maxZoom: 20,
+				ext: 'png'
+			}
+		)
+	]);
 	let choice = 0;
 	$('#base-map-selection').on('click', function() {
 		// console.log('click', choice);
@@ -163,10 +259,10 @@ jQuery(document).ready(function($) {
 	});
 	var $metricSelect2 = $('.metric-selection1, .metric-selection2');
 	$metricSelect2.on('select2:select', function(e) {
+		//label='C1568'
+		columnLookup = e.params.data.title;
 		//qual, sequential or diverging
 		metricType = e.params.data.element.attributes.value.value;
-		//label='C1568'
-		columnLookup = e.params.data.element.attributes.label.value.trim();
 		//> Gender - Male <
 		selection = e.params.data.text;
 		//max='616'
@@ -197,7 +293,19 @@ jQuery(document).ready(function($) {
 				opacity: myStrokeOpacity(layerVal1)
 			});
 
-			textDisplay = getTextDisplay(columnLookup, layerVal1);
+			if (columnLookup === 'INCOME') {
+				textDisplay = toCurrency(
+					layer.feature.properties[columnLookup]
+				);
+			} else {
+				if (layer.feature.properties[columnLookup]) {
+					textDisplay = parseFloat(
+						layer.feature.properties[columnLookup]
+					).toFixed(2);
+				} else {
+					textDisplay = layer.feature.properties[columnLookup];
+				}
+			}
 			
 			var customPopUp =
 				popupLocationPR(layer.feature.properties['LABEL']) +
@@ -216,7 +324,19 @@ jQuery(document).ready(function($) {
 				opacity: myStrokeOpacity(layerVal2)
 			});
 
-			textDisplay = getTextDisplay(columnLookup, layerVal2);
+			if (columnLookup == 'Q40' || columnLookup == 'Q205_1') {
+				textDisplay = toCurrency(
+					layer.feature.properties[columnLookup]
+				);
+			} else {
+				if (layer.feature.properties[columnLookup]) {
+					textDisplay = parseFloat(
+						layer.feature.properties[columnLookup]
+					).toFixed(2);
+				} else {
+					textDisplay = layer.feature.properties[columnLookup];
+				}
+			}
 			
 			var customPopUp =
 				popupLocationPR(layer.feature.properties['LABEL']) +
