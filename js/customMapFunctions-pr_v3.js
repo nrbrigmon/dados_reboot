@@ -163,6 +163,7 @@ jQuery(document).ready(function($) {
 	});
 	var $metricSelect2 = $('.metric-selection1, .metric-selection2');
 	$metricSelect2.on('select2:select', function(e) {
+		console.log(e.params.data)
 		//qual, sequential or diverging
 		metricType = e.params.data.element.attributes.value.value;
 		//label='C1568'
@@ -175,6 +176,12 @@ jQuery(document).ready(function($) {
 		columnMin = e.params.data.element.attributes.min.value;
 		//breaks='4,8,27,65'
 		columnBreaks = e.params.data.element.attributes.breaks.value;
+
+		//legend support
+		var legendCue = 0;
+		if (e.params.data.element.attributes.legend){
+			legendCue = e.params.data.element.attributes.legend.value
+		}
 
 		//get values, break into an array of numbers and cleanup a touch
 		columnBreaks = columnBreaks.split(',').map(function(elem, index) {
@@ -234,6 +241,27 @@ jQuery(document).ready(function($) {
 
 		$('#selected_column_title').html(selection);
 		$('#about-text').html(getDescriptionPR(columnLookup));
+
+		
+		function legendHelper(cue){
+			return legendLookup[cue];
+		}
+		//updateLegend
+		$("#color-range").show();
+		
+		if (legendCue == 'none'){
+				$("#color-range li.max").html(legendHelper(legendCue)[1] + " " + columnMax);
+				$("#color-range li.min").html(legendHelper(legendCue)[0] + " " + columnMin);
+		} else {
+				$("#color-range li.max").html(legendHelper(legendCue)[1]);
+				$("#color-range li.min").html(legendHelper(legendCue)[0]);
+		}
+		
+		$("div.colors div").each(function(index, elem) {
+				// console.log(index);
+				$(elem).css("background-color", chosenPallete[index]);
+		});
+		
 	});
 
 	$('#background-slider').slider({
@@ -251,3 +279,16 @@ jQuery(document).ready(function($) {
 
 	// $('#info-btn').trigger('click');
 }); //end of jQuery closure
+
+
+var legendLookup = {
+	'none':['Min:','Max:'],
+	'gender':['Fêmea (1)','Masculino (2)'],
+	'affirm':['No (0)','Sim (1)'],
+	'edu':['Baixo (0)','Alto (4)'],
+	'commute':['Menos de 15 min.(1)','Mais de 60 min.(4)'],
+	'duration':['0 Meses (1)','12+ Meses (3)'],
+	'secureA':['Baixo (0)','Alto (1)'],
+	'secureB':['Baixo (0)','Alto (2)'],
+	'superf':['Superficial (1)','Expansive (2)']
+}

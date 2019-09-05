@@ -10,9 +10,9 @@
   "author": "nate b",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.2",
+    "express": "^4.17.1",
     "merge-descriptors": "^1.0.1",
-    "nodemon": "^1.12.5",
-    "shortid": "^2.2.8"
+    "nodemon": "^1.19.2",
+    "shortid": "^2.2.14"
   }
 }

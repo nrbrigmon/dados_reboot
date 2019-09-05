@@ -254,11 +254,12 @@ jQuery(document).ready(function($) {
 			.trigger('change');
 	});
 
-	$('.dist-metric-selection, .blck-metric-selection').select2({
+	$('.metric-selection1, .metric-selection2').select2({
 		placeholder: 'Select a metric'
 	});
-	var $metricSelect2 = $('.dist-metric-selection, .blck-metric-selection');
+	var $metricSelect2 = $('.metric-selection1, .metric-selection2');
 	$metricSelect2.on('select2:select', function(e) {
+		console.log(e.params.data)
 		//label='C1568'
 		columnLookup = e.params.data.title;
 		//qual, sequential or diverging
