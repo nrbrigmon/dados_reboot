@@ -12,7 +12,7 @@
   "dependencies": {
     "express": "^4.17.3",
     "merge-descriptors": "^1.0.1",
-    "nodemon": "^1.19.2",
+    "nodemon": "^2.0.20",
     "shortid": "^2.2.14"
   }
 }
